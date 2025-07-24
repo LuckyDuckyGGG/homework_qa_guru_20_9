@@ -9,6 +9,7 @@ class RegistrationPage:
         self.registration_user_data = browser.element('.table-responsive').all('td').even
         self.state = browser.element('#state')
         self.city = browser.element('#city')
+        self.dropdown = browser.all('[id^=react-select][id*=option]')
 
     def open(self):
         browser.config.window_width = 1920
@@ -64,13 +65,13 @@ class RegistrationPage:
 
     def set_state(self, value):
         self.state.click()
-        browser.all('[id^=react-select][id*=option]').element_by(
+        self.dropdown.element_by(
             have.exact_text(value)
         ).click()
 
     def set_city(self, value):
         self.city.click()
-        browser.all('[id^=react-select][id*=option]').element_by(
+        self.dropdown.element_by(
             have.exact_text(value)
         ).click()
 
